@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<privateKey>soffice</privateKey>
+	<aesKey>7856412346543216</aesKey>
+	<channelName>金服</channelName>
+	<redis>
+		<passWord>4380</passWord>
+		<maxactive>1024</maxactive>
+	</redis>
+</root>

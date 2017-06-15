@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tronker.dao.UserBasicDao">
+
+	<sql id="findUserSql">
+		select user_name as userName,g_userbasic.id as userId,user_nickname as userNickName
+		,user_mobile as userMobile,user_sex as sex,user_img as userImage,
+		user_card as userCard,channel_name as channelName,secretKey,version 
+		from g_userbasic LEFT JOIN g_channel_app 
+		on g_userbasic.channel_appid=g_channel_app.id left join g_channel 
+		on g_channel_app.channel_id=g_channel.id
+	</sql>
+	
+	
+	<select id="findUserList" resultType="com.tronker.entity.BasicUser">
+		<include refid="findUserSql"></include>
+		limit #{pageIndex},#{pageSize}
+	</select>
+	
+	<select id="findUserCount" resultType="java.lang.Integer">
+		select count(g_userbasic.id)
+		from g_userbasic LEFT JOIN g_channel_app 
+		on g_userbasic.channel_appid=g_channel_app.id left join g_channel 
+		on g_channel_app.channel_id=g_channel.id
+	</select>
+	
+	
+</mapper>

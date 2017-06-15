@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--suppress UnparsedCustomBeanInspection -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+	<dubbo:application name="hm.demo" owner="tronker" organization="soffice"/>
+    <dubbo:provider retries="0" timeout="30000" payload="-1" />
+	<dubbo:consumer check="false" retries="0" timeout="30000"/>
+    <dubbo:registry protocol="zookeeper" address="${zk.address.user}" id="local" register="false"/>
+	<dubbo:registry id="user-info" protocol="zookeeper" address="${zk.address.user}" register="false"/>
+
+</beans>
+
